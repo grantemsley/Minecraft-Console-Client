@@ -430,7 +430,15 @@ namespace MinecraftClient
                     if (disconnectReason.Value == ChatBot.DisconnectReason.UserLogout) Exit(1);
                     if (disconnectReason.Value == ChatBot.DisconnectReason.InGameKick) Exit(2);
                     if (disconnectReason.Value == ChatBot.DisconnectReason.ConnectionLost) Exit(3);
-                    if (disconnectReason.Value == ChatBot.DisconnectReason.LoginRejected) Exit(4);
+                    
+                    
+                    
+                    if (disconnectReason.Value == ChatBot.DisconnectReason.LoginRejected) {
+                        if (errorMessage == "Minecraft Login failed : Incorrect password, blacklisted IP or too many logins.") {
+                            Exit(4);
+                        } else {
+                            Exit(5);
+                        }
                 }
                 Exit();
             }
